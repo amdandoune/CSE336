@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{ font-size: 12px; font-family: Arial,serif; }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+
+<b>Successful Response (should be &quot;no error&quot;):</b>
+<div id="success"></div>
+
+<b>Error Response:</b>
+<div id="error">No error</div>
+
+<script>
+    // Load content from url localhost:8080/test.html and put into <div id="success">...</div>
+    // If failed, put error info into <div id="error">...</div>
+    $("#success").load("http://localhost:8080/JqueryAjaxParameterExample?input=", function(response, status, xhr) {
+        if (status === "error") {
+            var msg = "Sorry but there was an error: ";
+            $("#error").html(msg + "Status: " + xhr.status + " StatusText: "+ xhr.statusText);
+        }
+    });
+</script>
+
+</body>
+</html>
